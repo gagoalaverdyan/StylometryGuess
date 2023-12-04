@@ -1,0 +1,6 @@
+.venv/
+nltk_data/
+__pycache__/
+hound.txt
+lost.txt
+war.txt
