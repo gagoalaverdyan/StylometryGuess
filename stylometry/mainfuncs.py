@@ -31,4 +31,4 @@ def findshortestcorpus(authorwords):
 
 
 if __name__ == "__main__":
-    print("Please run the main app")
+    print("Please run the main.py app")

@@ -61,11 +61,31 @@ def speechparttest(authorwords, lencorpus):
             title="PoS frquency per author",
         )
     plt.legend()
-    plt.show(block=True)
+    # plt.show(block=True)
 
 
-def vocabtest():
-    pass
+def vocabtest(authorwords):
+    """Compares author vocabularies using the chi-squared statistical test."""
+    chisquares = dict()
+    for author in authorwords:
+        if author != "unknown":
+            # Combine corpus for the current author and the unknown one to find 1000 most common words.
+            combinedcorpus = authorwords[author] + authorwords["unknown"]
+            proportion = len(authorwords[author]) / len(combinedcorpus)
+            combinedfrequency = nltk.FreqDist(combinedcorpus)
+            mostcommonwords = list(combinedfrequency.most_common(1000))
+            chisquared = 0
+
+            # Calculate observed vs. expected word counts.
+            for word, ccount in mostcommonwords:
+                observedcount = authorwords[author].count(word)
+                expectedcount = ccount * proportion
+                chisquared += (observedcount - expectedcount) ** 2 / expectedcount
+                chisquares[author] = chisquared
+            print(f"Chi-squared for {author} = {round(chisquared, 3)}")
+
+    mostlikelyauthor = min(chisquares, key=chisquares.get)
+    print(f"Based on the vocabulary, most-likely author is {mostlikelyauthor}")
 
 
 def jaccardtest():
@@ -73,4 +93,4 @@ def jaccardtest():
 
 
 if __name__ == "__main__":
-    print("Please run the main app")
+    print("Please run the main.py app")

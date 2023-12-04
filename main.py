@@ -1,8 +1,6 @@
 from stylometry.mainfuncs import *
 from stylometry.tests import *
 
-# Line styles for plotting
-
 
 def main():
     # Creating a dictionary and storing read lines in it
@@ -17,7 +15,8 @@ def main():
     wordlentest(author_words, shortest_corpus_len)
     stopwordstest(author_words, shortest_corpus_len)
     speechparttest(author_words, shortest_corpus_len)
-    # vocabtest(author_words)
+    vocabtest(author_words)
+    jaccardtest(author_words, shortest_corpus_len)
 
 
 if __name__ == "__main__":

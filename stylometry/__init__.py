@@ -8,4 +8,4 @@ nltk.data.path = [".\\nltk_data"]
 from nltk.corpus import stopwords
 
 if __name__ == "__main__":
-    print("Please run the main app")
+    print("Please run the main app.py")
