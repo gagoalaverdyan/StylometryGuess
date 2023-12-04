@@ -82,14 +82,28 @@ def vocabtest(authorwords):
                 expectedcount = ccount * proportion
                 chisquared += (observedcount - expectedcount) ** 2 / expectedcount
                 chisquares[author] = chisquared
-            print(f"Chi-squared for {author} = {round(chisquared, 3)}")
+            print(f"Chi-squared for {author} = {round(chisquared, 2)}")
 
     mostlikelyauthor = min(chisquares, key=chisquares.get)
-    print(f"Based on the vocabulary, most-likely author is {mostlikelyauthor}")
+    print(f"Based on the vocabulary, most-likely author is {mostlikelyauthor}.")
 
 
-def jaccardtest():
-    pass
+def jaccardtest(authorwords, lencorpus):
+    """Calculate Jaccard similarity of known corpuses to the unknown one."""
+    jaccard_by_author = dict()
+    unique_words_unknown = set(authorwords["unknown"][:lencorpus])
+    authors = (author for author in authorwords if author != "unknown")
+    for author in authors:
+        unique_words_author = set(authorwords[author][:lencorpus])
+        shared_words = unique_words_author.intersection(unique_words_unknown)
+        jaccard_sim = float(len(shared_words)) / (
+            len(unique_words_author) + len(unique_words_unknown) - len(shared_words)
+        )
+        jaccard_by_author[author] = jaccard_sim
+        print(f"Jaccard similarity for {author} = {jaccard_sim}")
+
+    mostlikelyauthor = max(jaccard_by_author, key=jaccard_by_author.get)
+    print(f"Based on the Jaccard similarity, most-likely author is {mostlikelyauthor}")
 
 
 if __name__ == "__main__":
