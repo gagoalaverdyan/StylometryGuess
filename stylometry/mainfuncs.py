@@ -27,6 +27,7 @@ def findshortestcorpus(authorwords):
         print(f"\nNumber of words for {author} = {currentlength}\n")
     shortestcorpus = min(wordcount)
     print(f"The length of the shortest corpus is {shortestcorpus}.")
+    return shortestcorpus
 
 
 if __name__ == "__main__":

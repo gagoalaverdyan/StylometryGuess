@@ -46,8 +46,22 @@ def stopwordstest(authorwords, lencorpus):
     # plt.show() Uncomment to show the plot
 
 
-def speechparttest():
-    pass
+def speechparttest(authorwords, lencorpus):
+    """Plot the usage of parts of speech per author."""
+    posfrequencies = dict()
+    plt.figure(3)
+
+    for i, author in enumerate(authorwords):
+        authorpos = [pos[1] for pos in nltk.pos_tag(authorwords[author][:lencorpus])]
+        posfrequencies[author] = nltk.FreqDist(authorpos)
+        posfrequencies[author].plot(
+            35,
+            label=author,
+            linestyle=LINES[i],
+            title="PoS frquency per author",
+        )
+    plt.legend()
+    plt.show(block=True)
 
 
 def vocabtest():

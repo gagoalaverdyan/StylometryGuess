@@ -16,7 +16,7 @@ def main():
     shortest_corpus_len = findshortestcorpus(author_words)
     wordlentest(author_words, shortest_corpus_len)
     stopwordstest(author_words, shortest_corpus_len)
-    # speechparttest(author_words, shortest_corpus_len)
+    speechparttest(author_words, shortest_corpus_len)
     # vocabtest(author_words)
 
 
