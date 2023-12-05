@@ -4,9 +4,10 @@ StylometryGuess analyzes two known author texts to suggest the most likely autho
 
 The program uses [NLTK](https://www.nltk.org/) for corpus analysis and [MatPlotLib](https://matplotlib.org/) for plotting.
 
-![App Screenshot](https://www.dropbox.com/scl/fi/d17oy9cvgb7fa3ojltj7m/1.png?rlkey=i8kezr14whfa5o3l4u46llclj&dl=1)
+![image](https://i.imgur.com/BzkyXYv.png)
 
-![App Screenshot](https://www.dropbox.com/scl/fi/xkto7nh9hkk191psss8gj/2.png?rlkey=w49mir96krwqvswxzdys0g0uw&dl=1)
+![image](https://i.imgur.com/z7NTQK5.png)
+
 ## Installation
 
 ```bash
