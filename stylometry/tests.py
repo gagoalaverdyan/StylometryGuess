@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import nltk
+import termcolor
 
 LINES = ["-", ":", "--"]
 
@@ -28,8 +29,10 @@ def stopwordstest(authorwords, lencorpus):
     stopwordfrequencies = dict()
     plt.figure(2)
     stopwords = set(nltk.corpus.stopwords.words("english"))
-    print(f"\nNumber of stopwords is {len(stopwords)}")
-    print(stopwords)
+
+    # For testing purposes
+    # print(f"\nNumber of stopwords is {len(stopwords)}")
+    # print(stopwords)
 
     for i, author in enumerate(authorwords):
         authorstopwords = [
@@ -58,10 +61,10 @@ def speechparttest(authorwords, lencorpus):
             35,
             label=author,
             linestyle=LINES[i],
-            title="PoS frquency per author",
+            title="Parts of speecg frequency per author",
         )
     plt.legend()
-    # plt.show(block=True)
+    plt.show(block=True)
 
 
 def vocabtest(authorwords):
@@ -82,10 +85,17 @@ def vocabtest(authorwords):
                 expectedcount = ccount * proportion
                 chisquared += (observedcount - expectedcount) ** 2 / expectedcount
                 chisquares[author] = chisquared
-            print(f"Chi-squared for {author} = {round(chisquared, 2)}")
+            # For testing purposes
+            # print(f"Chi-squared for {author} = {round(chisquared, 2)}")
 
     mostlikelyauthor = min(chisquares, key=chisquares.get)
-    print(f"Based on the vocabulary, most-likely author is {mostlikelyauthor}.")
+    print(
+        termcolor.colored(
+            f"\n\nBased on the vocabulary, most-likely author is {mostlikelyauthor}.",
+            "green",
+            attrs=["reverse"],
+        )
+    )
 
 
 def jaccardtest(authorwords, lencorpus):
@@ -100,10 +110,17 @@ def jaccardtest(authorwords, lencorpus):
             len(unique_words_author) + len(unique_words_unknown) - len(shared_words)
         )
         jaccard_by_author[author] = jaccard_sim
-        print(f"Jaccard similarity for {author} = {jaccard_sim}")
+        # For testing purposes
+        # print(f"Jaccard similarity for {author} = {jaccard_sim}")
 
     mostlikelyauthor = max(jaccard_by_author, key=jaccard_by_author.get)
-    print(f"Based on the Jaccard similarity, most-likely author is {mostlikelyauthor}")
+    print(
+        termcolor.colored(
+            f"Based on the Jaccard similarity, most-likely author is {mostlikelyauthor}",
+            "yellow",
+            attrs=["reverse"],
+        )
+    )
 
 
 if __name__ == "__main__":
