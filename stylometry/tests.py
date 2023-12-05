@@ -61,7 +61,7 @@ def speechparttest(authorwords, lencorpus):
             35,
             label=author,
             linestyle=LINES[i],
-            title="Parts of speecg frequency per author",
+            title="Parts of speech frequency per author",
         )
     plt.legend()
     plt.show(block=True)
