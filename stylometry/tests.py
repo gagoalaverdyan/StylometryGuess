@@ -50,7 +50,7 @@ def stopwordstest(authorwords, lencorpus):
 
 
 def speechparttest(authorwords, lencorpus):
-    """Plot the usage of parts of speech per author."""
+    """Plot the usage of parts of speech by author."""
     posfrequencies = dict()
     plt.figure(3)
 

@@ -20,7 +20,7 @@ git clone https://github.com/gagoalaverdyan/StylometryGuess.git
 
 Recommended using the program in a virtual environment.
 ```python
-python -m .venv
+python -m venv .venv
 .venv/Scripts/activate
 pip install -r requirements.txt
 python ./main.py
