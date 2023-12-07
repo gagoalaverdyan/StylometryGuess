@@ -1,12 +1,12 @@
 # StylometryGuess
 
-StylometryGuess analyzes two known author texts to suggest the most likely author of an unknown text. It generates three graphs depicting word lengths, stop word usage, and parts of speech. The final suggestion is determined through vocabulary and Jaccard tests.
+StylometryGuess analyzes known author texts given by the user to suggest the most likely author of an unknown text. It generates three graphs depicting word lengths, stop word usage, and parts of speech. The final suggestion is determined through vocabulary and Jaccard tests.
 
 The program uses [NLTK](https://www.nltk.org/) for corpus analysis and [MatPlotLib](https://matplotlib.org/) for plotting.
 
-![image](https://i.imgur.com/BzkyXYv.png)
+![image](https://i.imgur.com/MPHEPIk.png)
 
-![image](https://i.imgur.com/z7NTQK5.png)
+![image](https://i.imgur.com/K0n7u4F.png)
 
 ## Installation
 
@@ -22,6 +22,11 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
+The program comes with three .txt book files for testing:  
+hound.txt - The Hound of the Baskervilles by Arthur Conan Doyle  
+war.txt - The War of the Worlds by H. G. Wells  
+frankenstein.txt - Frankenstein by Mary Shelley  
 
 ```python
 python ./main.py

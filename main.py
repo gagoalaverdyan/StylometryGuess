@@ -5,15 +5,17 @@ from stylometry.tests import *
 def main():
     # Welcome the user and get the required information
     welcome_message()
-    first_author, first_file = get_author("first")
-    second_author, second_file = get_author("second")
-    unknown_author, unknown_file = get_author("unknown")
+    number_of_corpuses = get_known_corpuses()
+    corpuses = list()
+    for n in range(number_of_corpuses):
+        corpuses.append(get_author(n))
+    corpuses.append(get_author("unknown"))
 
     # Store the corpuses as strings
     author_strings = dict()
-    author_strings[first_author] = read_file(first_file)
-    author_strings[second_author] = read_file(second_file)
-    author_strings[unknown_author] = read_file(unknown_file)
+    for pair in corpuses:
+        author_strings[pair[0]] = read_file(pair[1])
+
     author_words = make_word_dict(author_strings)
     shortest_corpus_len = find_shortest_corpus(author_words)
 

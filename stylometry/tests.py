@@ -1,3 +1,5 @@
+from random import choice
+
 import matplotlib.pyplot as plt
 import nltk
 import termcolor
@@ -16,7 +18,7 @@ def wordlentest(authorwords, lencorpus):
         authorwordfrequencies[author] = nltk.FreqDist(wordlengths)
         authorwordfrequencies[author].plot(
             15,
-            linestyle=LINES[i],
+            linestyle=choice(LINES),
             label=author,
             title="Word lengths by author",
         )
@@ -42,7 +44,7 @@ def stopwordstest(authorwords, lencorpus):
         stopwordfrequencies[author].plot(
             50,
             label=author,
-            linestyle=LINES[i],
+            linestyle=choice(LINES),
             title="Most common stopwords by author",
         )
     plt.legend()
@@ -60,7 +62,7 @@ def speechparttest(authorwords, lencorpus):
         posfrequencies[author].plot(
             35,
             label=author,
-            linestyle=LINES[i],
+            linestyle=choice(LINES),
             title="Parts of speech frequency per author",
         )
     plt.legend()

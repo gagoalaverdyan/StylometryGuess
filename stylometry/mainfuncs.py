@@ -1,63 +1,68 @@
 import os
 
 import nltk
-import termcolor
+from termcolor import colored
 
 LINES = ["-", ":", "--"]
 
 
 def welcome_message():
     print(
-        termcolor.colored(
-            "\nWelcome to Stylometry Author Finder!\n",
-            "green",
-        )
-    )
-    print(
-        termcolor.colored(
-            "This program analyzes two known author texts to suggest the most likely author of an\nunknown text. It generates three graphs depicting word lengths, stop word usage, and\nparts of speech. The final suggestion is determined through vocabulary and Jaccard\ntests. Ensure all three .txt files are in the program's directory.\n",
-            "blue",
-        )
+        "\n\n\n",
+        "      ______ ______",
+        f"    _/      Y      \\_	    {colored("Welcome to StylometryGuess", "green")}",
+        "   // ~~ ~~ | ~~ ~  \\\\",
+        f"  // ~ ~ ~~ | ~~~ ~~ \\\\     {colored("Find the author of the unknown text", "yellow")}",
+        f" //________.|.________\\\\    {colored("by analyzing the known ones.", "yellow")}",
+        "`----------`-'----------', ",
+        sep="\n",
     )
 
+def get_known_corpuses():
+    """Receive how many known corpuses will be analyzed and return the number."""
+    while True:
+        n = input(colored("Enter the number of books and authors to analyze (e.g. 4):\n", "green"))
+        try:
+            n = int(n)
+            if n >= 2:
+                return n
+            else:
+                print(colored("The number must be 2 or more.", "red"))
+        except ValueError:
+            print(colored("Please enter a valid integer.", "red"))
 
 def get_author(n):
+    """Get the information for the n-th author"""
     if n == "unknown":
-        book = input(
-            termcolor.colored(
-                f"Enter the name of the {n} .txt file (e.g. hyperion.txt):\n",
-                "magenta",
-            )
-        )
-        while not book or book[-4:] != ".txt" or not os.path.exists(book):
+        while True:
             book = input(
-                termcolor.colored(
-                    f"Enter a valid .txt filename:\n",
-                    "red",
+                colored(
+                    f"Enter the name of the {n} .txt file (e.g. hyperion.txt):\n",
+                    "green",
                 )
             )
-        return (n, book)
+            if not book or book[-4:] != ".txt" or not os.path.exists(book):
+                print(colored("Enter a valid .txt filename:\n", "red"))
+            else:
+                return (n, book)
     else:
         author = input(
-            termcolor.colored(
-                f"Enter the name of the {n} file's author (e.g. Dan Simmons):\n",
-                "magenta",
+            colored(
+                f"Enter the name of the author of file # {n+1} (e.g. Dan Simmons):\n",
+                "green",
             )
         )
-        book = input(
-            termcolor.colored(
-                f"Enter the name of the {n} .txt file (e.g. hyperion.txt):\n",
-                "magenta",
-            )
-        )
-        while not book or book[-4:] != ".txt" or not os.path.exists(book):
+        while True:
             book = input(
-                termcolor.colored(
-                    f"Enter a valid .txt file name:\n",
-                    "red",
+                colored(
+                    f"Enter the name of the .txt file # {n+1} (e.g. hyperion.txt):\n",
+                    "green"
                 )
             )
-        return (author, book)
+            if not book or book[-4:] != ".txt" or not os.path.exists(book):
+                print(colored("Enter a valid .txt filename:", "red"))
+            else:
+                return (author, book)
 
 
 def read_file(filename):
