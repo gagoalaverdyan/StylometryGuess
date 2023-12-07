@@ -10,29 +10,28 @@ The program uses [NLTK](https://www.nltk.org/) for corpus analysis and [MatPlotL
 
 ## Installation
 
+It is recommended to the program in a virtual environment since it has multiple requirements.
+
 ```bash
 mkdir stylometry
 cd stylometry
-git clone https://github.com/gagoalaverdyan/StylometryGuess.git
+git clone https://github.com/gagoalaverdyan/StylometryGuess.git .
+python -m venv .venv
+.venv/Scripts/activate
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-Recommended using the program in a virtual environment.
 ```python
-python -m venv .venv
-.venv/Scripts/activate
-pip install -r requirements.txt
 python ./main.py
 ```
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
+Pull requests are very welcome. For major changes, please open an issue first
 to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 
-[GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+The program is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) and is free to download, use or distribute.
